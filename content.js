@@ -9,13 +9,15 @@ btn.style.top = "50%";
 btn.style.right = 0;
 btn.style.transform = "translateY(-50%)";
 btn.addEventListener("click", function () {
-  let array = [...document.body.getElementsByTagName("img")];
-  array.forEach((img) => {
+  let imgs = [...document.body.getElementsByTagName("img")],
+    iframes = [...document.getElementsByTagName("iframe")];
+  imgs.forEach((img) => {
     img.src =
       "https://secure.gravatar.com/avatar/a4be085553c175067749093777136e61?s=256&d=mm&r=g";
     img.width = "100";
     img.height = "100";
   });
+  iframes.forEach((iframe) => iframe.remove());
 });
 chrome.storage.local.get("enabled", (data) => {
   data.enabled &&
